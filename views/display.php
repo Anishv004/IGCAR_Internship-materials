@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Student Information</h1>
+        <h1>Student Results</h1>
         <div class="student-info">
             <div class="left-column">
                 <h2>Personal Details</h2>
@@ -21,11 +21,12 @@
                 <p><strong>Mark 1:</strong> <?php echo $mark1; ?></p>
                 <p><strong>Mark 2:</strong> <?php echo $mark2; ?></p>
                 <p><strong>Mark 3:</strong> <?php echo $mark3; ?></p>
-                <h2>Percentile</h2>
-                <p><strong>Percentile:</strong> <?php echo $percentile; ?></p>
+                <!-- <h2>Percentile</h2> -->
+                <p><strong>Overall Percentile:</strong> <?php echo $percentile; ?></p>
             </div>
         </div>
     </div>
+    <div id="bar-graph">
     <canvas id="marksChart"></canvas>
     <script>
     var marksChart = new Chart(document.getElementById("marksChart"), {
@@ -62,5 +63,6 @@
         }
     });
 </script>
+    </div>
 </body>
 </html>
