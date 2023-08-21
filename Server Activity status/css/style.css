@@ -1,0 +1,17 @@
+
+.div {
+    text-align: center;
+    max-height: 70%;
+}
+
+.div img {
+    display: inline-block;
+    width: 100%;
+    height: 70vh;
+}
+
+.div:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
