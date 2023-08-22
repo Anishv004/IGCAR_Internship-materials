@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Activity Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div>
+        <h1>Server Activity Status</h1>
+    </div>
+    <div class="container">
+        {% for ip, results in ping_results.items() %}
+        <div class="ip-card">
+            <img src="{{ server_image_links[loop.index - 1] }}" alt="Server Image {{ loop.index }}">
+            <div>
+                <ul class="status-list">
+                    {% for result in results %}
+                    <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="current-time" class="bottom-corner">
+        Last Checked : <span id="time-value"></span>
+    </div>
+
+    <script>
+        function updateCurrentTime() {
+            fetch('/current_time')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('time-value').textContent = data;
+                });
+        }
+        updateCurrentTime();
+    </script>
+
+    <script>
+        function refreshPage() {
+            location.reload();
+        }
+        setInterval(refreshPage, 100000);
+    // setInterval(refreshPage, 600000);
+    </script>
+
+</body>
+
+</html>
